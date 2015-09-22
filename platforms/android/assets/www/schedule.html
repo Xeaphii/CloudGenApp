@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+		<title>jQuery Mobile Bootstrap Theme</title>
+		<link rel="stylesheet" href="themes/Bootstrap.css">
+		<link rel="stylesheet" href="src/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<script src="src/jquery-1.11.1.min.js"></script>
+		<script src="src/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+		
+		.ui-icon-prof {
+		  background: url(img/prof.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-bag {
+		  background: url(img/bag.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-calen {
+		  background: url(img/calen.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-inf {
+		  background: url(img/inf.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" data-theme="b" >
+			<div data-role="header" data-position="inline">
+				<h1>CloudGen</h1>
+				<a href="inbox.html" data-icon="comment" class="ui-btn-right" data-transition="none">Inbox</a>
+			</div>
+			<div data-role="content" data-theme="b">
+
+
+				<form action="#" method="get">
+
+					<h4 style="margin-top:40px">Schedule meeting with out experts</h4>
+
+
+					<div data-role="fieldcontain" style="margin-top:20px">
+						<label for="time_">Enter time:</label>
+						<input type="text" name="time_" id="time_" value=""  />
+					</div>
+					<div data-role="fieldcontain">
+						<label for="date_">Enter date:</label>
+						<input type="text" name="date_" id="date_" value=""  />
+					</div>
+					<div data-role="fieldcontain">
+					<label for="select_topic" class="select">Choose topic:</label>
+					<select name="select-choice-1" id="combo" name="select_topic">
+						<option value="standard">Topic 1</option>
+						<option value="rush">Topic 2</option>
+						<option value="express">Topic 3</option>
+						<option value="overnight">Topic 4</option>
+					</select>
+					</div>
+					
+						
+				</form>
+				<script>
+				function onSubmitButton(){
+							//	alert($('#combo :selected').text());
+								$.get("http://xeamphiil.co.nf/CloudGen/MakeMeeting.php/MakeMeeting.php", { user_id:1, 
+								topic:$('#combo :selected').text(), date_meet:$('input[name=date_]').val()
+								, time_meet:$('input[name=time_]').val()}, function(data, status){
+									alert("Meeting notification sent. You will be recevice message from our team soon");
+								});
+						}
+					</script>
+				<div class="ui-grid-solo" style="margin-top:40px">
+						<div class="ui-block-a">
+							 <input type="submit" name="Action" value="Schedule" data-theme="a" onclick="onSubmitButton()"/>
+						</div>
+					</div>
+
+			</div>
+		<div data-role="footer" data-position="fixed">	
+		<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" data-icon="prof" data-transition="none">Profile</a></li>
+						<li><a href="schedule.html" data-icon="calen" class="ui-btn-active ui-state-persist" data-transition="none">Schedule</a></li>
+						<li><a href="showcase.html" data-icon="bag" data-transition="none">Briefcase</a></li>
+						<li><a href="info.html"  data-icon="inf" data-transition="none">Info</a></li>
+					</ul>
+				</div>
+		</div>
+	</body>
+	
+
+</html>
