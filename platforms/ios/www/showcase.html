@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+		<title>jQuery Mobile Bootstrap Theme</title>
+		<link rel="stylesheet" href="themes/Bootstrap.css">
+		<link rel="stylesheet" href="src/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<script src="src/jquery-1.11.1.min.js"></script>
+		<script src="src/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+		.center-justified {
+			text-align: justify;
+			-moz-text-align-last: center;
+			text-align-last: center;
+		}
+		</style>
+		<style>
+		
+		.ui-icon-prof {
+		  background: url(img/prof.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-bag {
+		  background: url(img/bag.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-calen {
+		  background: url(img/calen.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		.ui-icon-inf {
+		  background: url(img/inf.png) 50% 25% no-repeat rgba(230, 230, 230, 0.2) !important;
+		 background-size: 16px 16px;
+		  box-shadow: none;
+		  -webkit-box-shadow: none;
+		}
+		</style>
+	</head>
+	<script>
+	function myFunction() {
+		
+	    $.get("http://xeamphiil.co.nf/CloudGen/GetBrochuers.php", { user_id:localStorage.email}, function(data, status){
+				input = data.split(";");
+				output = "";
+				for(i = 0 ; i < input.length;i++){
+					row = input[i].split(":");
+					
+					output = output+ "<ul data-role='listview' data-inset='true' data-divider-theme='a'>";
+					output = output+"<li data-role='list-divider'>"+row[0]+"</li>";
+					output = output+"<li ><div class='ui-grid-a'><div class='ui-block-a' style='width:20%'><img src='"+row[2]+"' height='100px' width='70px'/></div><div class='ui-block-b ' style='width:70%;margin-left:7%'>";
+					output = output+"<p style='white-space: normal;' class='center-justified '>"+row[1]+"</p>";
+					output = output+"<div data-role='controlgroup' data-type='horizontal'>";
+					output = output+"<a href='"+row[3]+"' class='ui-btn ui-btn-icon-notext ui-icon-arrow-d' >Download</a>";
+					output = output+"<a href='http://xeamphiil.co.nf/CloudGen/EmailBroucher.php?id="+row[4]+"&email="+localstorage.email+"' class='ui-btn ui-btn-icon-notext ui-icon-mail'>Email me</a>";
+					output = output+"</div></div></div></li></ul>";
+				}
+				document.getElementById("messages_list").innerHTML =output;
+			}
+	}
+	</script>
+	<body onload="myFunction()">
+		<div data-role="page" data-theme="b" >
+			<div data-role="header" data-position="inline">
+				<h1>CloudGen</h1>
+				<a href="inbox.html" data-icon="comment" class="ui-btn-right" data-transition="none">Inbox</a>
+			</div>
+		<div data-role="content" id="messages_list" data-theme="b">
+
+				
+
+			</div>
+			
+		
+		<div data-role="footer" data-position="fixed">	
+		<div data-role="navbar">
+					<ul>
+						<li><a href="index.html" data-icon="prof" data-transition="none">Profile</a></li>
+						<li><a href="schedule.html" data-icon="calen" data-transition="none">Schedule</a></li>
+						<li><a href="showcase.html" data-icon="bag" class="ui-btn-active ui-state-persist" data-transition="none">Briefcase</a></li>
+						<li><a href="info.html"  data-icon="inf" data-transition="none">Info</a></li>
+					</ul>
+				</div>
+		</div>
+	</body>
+
+       
+
+</html>
